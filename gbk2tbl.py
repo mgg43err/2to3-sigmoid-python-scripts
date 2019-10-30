@@ -83,4 +83,4 @@ for record in genbank_file:
                     if key != 'protein_id' and key !='translation':
                         qualifiers += '\n\t\t\t%s\t%s' % (key, value)
             print ('%s\t%s\t%s\t%s' % (start, end, feature_type, qualifiers))
-genbank_file.close())
+genbank_file.close()
