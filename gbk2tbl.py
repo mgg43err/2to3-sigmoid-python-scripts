@@ -2,7 +2,9 @@ import os, sys, platform
 import argparse
 from Bio import SeqIO
 import geneparse
-
+module_path = os.path.dirname(os.path.realpath(__file__))
+input_path = os.path.join(module_path, 'input_file')
+output_path = os.path.join(module_path, 'output_file')
 def createParser():
 
     parser = argparse.ArgumentParser(
@@ -52,7 +54,7 @@ genbank_file = SeqIO.parse(enter.input_file, 'genbank')
 for record in genbank_file:
     print ('>Feature %s' % record.id)
     count += 1
-    genbank = GenbankFile(path=enter.input_file)
+    genbank = GenbankFile()
     genbank.parse()
     for feature in genbank.records[count]:
         if feature.type != 'source':
