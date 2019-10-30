@@ -28,7 +28,7 @@ class GenbankFeature(object):
         out += 'qualifiers %s\n' % self.qualifiers
         return out
 
-class GenbankFile(file):
+class GenbankFile(argv[0]):
     def __init__(self, path=None):
         self.path = path
         self.file = open(self.path, 'r')
@@ -54,7 +54,7 @@ class GenbankFile(file):
             for line in record:
                 if line[0] != ' ':
                     index = record.index(line)
-                    for num in xrange(record.index(line)+1, len(record)):
+                    for num in range(record.index(line)+1, len(record)):
                         if record[num][0] == ' ':
                             record[index] += record[num]
                         else:
@@ -65,7 +65,7 @@ class GenbankFile(file):
                 for line in feature:
                     if line[0] == '/':
                        index = feature.index(line)
-                       for num in xrange(feature.index(line)+1, len(feature)):
+                       for num in range(feature.index(line)+1, len(feature)):
                             if feature[num][0] != '/' and feature[index].startswith('/translation') is False:
                                 feature[index] += ' %s' % feature[num]
                             elif feature[num][0] != '/' and feature[index].startswith('/translation'):
