@@ -1,7 +1,7 @@
 import os, sys, platform
 import argparse
 from Bio import SeqIO
-from geneparse import *
+from geneparse import*
 
 def createParser():
 
