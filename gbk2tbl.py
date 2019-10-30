@@ -47,7 +47,7 @@ if enter.fasta != False:
     SeqIO.write(genbank_file, fasta_file, 'fasta')
     genbank_file.close()
     fasta_file.close()
-genbank_file = GenbankFile(path=enter.input_file)
+genbank_file = GenbankFile()
 genbank_file.parse()
 count = -1
 genbank_file = SeqIO.parse(enter.input_file, 'genbank')
