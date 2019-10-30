@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-class FeatureQualifier(object):
+class FeatureQualifier:
     def __init__(self, name=None, value=None, pair={}):
         self.name = name
         self.value = value
@@ -10,17 +10,17 @@ class FeatureQualifier(object):
         out = self.name+' : '+self.value
         return out
 
-class ListOfFeatureQualifiers(list):
+class ListOfFeatureQualifiers:
     def __add__(self, other):
         self.append(other)
 
-class GenbankFeature(object):
+class GenbankFeature:
     def __init__(self, location=None, type=None, qualifiers=None, strand=None):
         self.location=location
         self.type = type
         self.qualifiers = qualifiers
         self.strand = strand
-    
+
     def __str__(self):
         out = 'Type: %s\n' % self.type
         out += 'Strand: %s\n' % self.strand
@@ -28,11 +28,11 @@ class GenbankFeature(object):
         out += 'qualifiers %s\n' % self.qualifiers
         return out
 
-class GenbankFile(open()):
+class GenbankFile:
     def __init__(self, path=None):
         self.path = path
         self.file = open(self.path, 'r')
-        
+
     def parse(self):
         self.file_strings = self.file.read()
         #print self.file_strings
@@ -47,7 +47,7 @@ class GenbankFile(open()):
         self.records = [record.splitlines()[1:] for record in self.records]
         #print self.records
         self.records = [
-             [line.replace('     ', '', 1) for line in record] 
+             [line.replace('     ', '', 1) for line in record]
                            for record in self.records]
         #print self.records
         for record in self.records:
@@ -71,7 +71,7 @@ class GenbankFile(open()):
                             elif feature[num][0] != '/' and feature[index].startswith('/translation'):
                                 feature[index] += feature[num]
                             else:
-                                break    
+                                break
         self.records = [[[line for line in feature if feature.index(line) == 0 or line[0] == '/'] for feature in record] for record in self.records]
         #print self.records
         list_of_records = []
@@ -91,4 +91,3 @@ class GenbankFile(open()):
                 record_with_features.append(feat)
             list_of_records.append(record_with_features)
         self.records = [record for record in list_of_records]
-
