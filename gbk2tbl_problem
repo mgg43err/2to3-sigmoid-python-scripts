@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "gbk2tbl.py", line 50, in <module>
+    genbank_file = GenbankFile()
+NameError: name 'GenbankFile' is not defined
