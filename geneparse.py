@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-class FeatureQualifier:
+class FeatureQualifier(object):
     def __init__(self, name=None, value=None, pair={}):
         self.name = name
         self.value = value
@@ -10,11 +10,11 @@ class FeatureQualifier:
         out = self.name+' : '+self.value
         return out
 
-class ListOfFeatureQualifiers:
+class ListOfFeatureQualifiers(list):
     def __add__(self, other):
         self.append(other)
 
-class GenbankFeature:
+class GenbankFeature(object):
     def __init__(self, location=None, type=None, qualifiers=None, strand=None):
         self.location=location
         self.type = type
@@ -28,7 +28,7 @@ class GenbankFeature:
         out += 'qualifiers %s\n' % self.qualifiers
         return out
 
-class GenbankFile():
+class GenbankFile(file):
     def __init__(self, path=None):
         self.path = path
         self.file = open(self.path, 'r')
