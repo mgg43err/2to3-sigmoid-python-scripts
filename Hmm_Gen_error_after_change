@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "HmmGen.py", line 381, in <module>
-    prog[2] = prog[2].replace('\r', '')
-IndexError: list index out of range
