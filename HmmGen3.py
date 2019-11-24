@@ -351,7 +351,7 @@ print ('\nHmmGen 2.21 (March 25, 2017)')
 print ("="*50)
 print ('Options used:\n')
 for arg in range(1, len(sys.argv)):
-    print (sys.argv[arg])
+    print (sys.argv[arg], end = " ")
 file_path = enter.report_file
 qualifier = {'CHECK': 'CHECKED!'}
 qualifiers_function(enter.qual, qualifier)
